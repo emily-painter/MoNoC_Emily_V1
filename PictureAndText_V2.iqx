@@ -1,0 +1,298 @@
+﻿<values>
+/present_image_size = 1px * display.getpixelsy(75, 1)
+
+/location_horizontal_1 = 1px * display.getpixelsx(33.3, 1)
+/location_horizontal_2 = 1px * display.getpixelsx(50, 1)
+/location_horizontal_3 = 1px * display.getpixelsx(66.7, 1)
+/location_horizontal_4 = 1px * display.getpixelsx(45.83, 1)
+/location_horizontal_5 = 1px * display.getpixelsx(54.17, 1)
+
+/location_vertical_1 = 1px * display.getpixelsy(25, 1)
+/location_vertical_2 = 1px * display.getpixelsy(50, 1)
+/location_vertical_3 = 1px * display.getpixelsy(75, 1)
+/location_vertical_4 = 1px * display.getpixelsy(43.75, 1)
+/location_vertical_5 = 1px * display.getpixelsy(56.25, 1)
+
+/ MYfontstyle = "Avenir Next"
+/ MYfontsize = 2%
+/ textPosition = 46
+/ boldText = 0
+</values>
+
+
+<picture SquarePresent>
+	/ size=(values.present_image_size, values.present_image_size)
+	/ items = image_presentation
+	/ select = sequence 
+</picture>
+
+
+<picture SquarePresent_present>
+	/ size=(values.present_image_size, values.present_image_size)
+	/ position = (50%,50%)
+	/ items = ()
+	/ select = sequence 
+</picture>
+
+<picture Present_image_patch_step>
+	/ size=(values.present_image_size, values.present_image_size)
+	/ position = (50%,50%)
+	/ items = ()
+	/ select = sequence
+</picture>
+
+***************************************************************************************************
+***************************************************************************************************
+2. Masking Pictures
+<picture Masking_picture_1>
+	/ size=(values.present_image_size, values.present_image_size)
+	/ position = (50%,50%)
+	/items = Masking_item_1
+	/ select = noreplace 
+</picture>
+<picture Masking_picture_2>
+	/ size=(values.present_image_size, values.present_image_size)
+	/ position = (50%,50%)
+	/ items = Masking_item_2
+	/ select = noreplace 
+</picture>
+<picture Masking_picture_3>
+	/ size=(values.present_image_size, values.present_image_size)
+	/ position = (50%,50%)
+	/ items = Masking_item_3
+	/ select = noreplace 
+</picture>
+<picture Masking_picture_4>
+	/ size=(values.present_image_size, values.present_image_size)
+	/ position = (50%,50%)
+	/ items = Masking_item_4
+	/ select = noreplace 
+</picture>
+<picture Masking_picture_5>
+	/ size=(values.present_image_size, values.present_image_size)
+	/ position = (50%,50%)
+	/ items = Masking_item_5
+	/ select = noreplace 
+</picture>
+
+
+****** LOADING MASKING PICTURES FOR CENTRE AND PERIPHERY
+
+
+<picture Masking_periphery_1>
+	/ size = (values.present_image_size/3,values.present_image_size/3)
+	/ hposition = values.x_coordinate
+	/ vposition = values.y_coordinate
+	/ items = Masking_periphery_item_1
+	/ select = noreplace 
+</picture>
+<picture Masking_periphery_2>
+	/ size = (values.present_image_size/3,values.present_image_size/3)
+	/ hposition = values.x_coordinate
+	/ vposition = values.y_coordinate
+	/ items = Masking_periphery_item_2
+	/ select = noreplace 
+</picture>
+<picture Masking_periphery_3>
+	/ size = (values.present_image_size/3,values.present_image_size/3)
+	/ hposition = values.x_coordinate
+	/ vposition = values.y_coordinate
+	/ items = Masking_periphery_item_3
+	/ select = noreplace 
+</picture>
+<picture Masking_periphery_4>
+	/ size = (values.present_image_size/3,values.present_image_size/3)
+	/ hposition = values.x_coordinate
+	/ vposition = values.y_coordinate
+	/ items = Masking_periphery_item_4
+	/ select = noreplace 
+</picture>
+<picture Masking_periphery_5>
+	/ size = (values.present_image_size/3,values.present_image_size/3)
+	/ hposition = values.x_coordinate
+	/ vposition = values.y_coordinate
+	/ items = Masking_periphery_item_5
+	/ select = noreplace 
+</picture>
+
+<picture Masking_center_1>
+	/ size = (values.present_image_size/6,values.present_image_size/6)
+	/ hposition = values.x_coordinate
+	/ vposition = values.y_coordinate
+	/ items = Masking_center_item_1
+	/ select = noreplace 
+</picture>
+<picture Masking_center_2>
+	/ size = (values.present_image_size/6,values.present_image_size/6)
+	/ hposition = values.x_coordinate
+	/ vposition = values.y_coordinate
+	/ items = Masking_center_item_2
+	/ select = noreplace 
+</picture>
+<picture Masking_center_3>
+	/ size = (values.present_image_size/6,values.present_image_size/6)
+	/ hposition = values.x_coordinate
+	/ vposition = values.y_coordinate
+	/ items = Masking_center_item_3
+	/ select = noreplace 
+</picture>
+<picture Masking_center_4>
+	/ size = (values.present_image_size/6,values.present_image_size/6)
+	/ hposition = values.x_coordinate
+	/ vposition = values.y_coordinate
+	/ items = Masking_center_item_4
+	/ select = noreplace 
+</picture>
+<picture Masking_center_5>
+	/ size = (values.present_image_size/6,values.present_image_size/6)
+	/ hposition = values.x_coordinate
+	/ vposition = values.y_coordinate
+	/ items = Masking_center_item_5
+	/ select = noreplace 
+</picture>
+
+
+
+
+
+
+
+<picture CP_patch>
+	/ size = (values.present_image_size/3,values.present_image_size/3)
+	/ items = CP_patch
+	/ select = sequence
+</picture>
+
+<picture CP_patch_present>
+	/ size = (values.present_image_size/3,values.present_image_size/3)
+	/ hposition = text.x.item(values.order)
+	/ vposition = text.y.item(values.order)
+	/ items = ()
+	/ select = sequence
+</picture>
+
+
+<text process_notice>
+/ items = ("You have finished <%values.order_question%> of <%values.number_of_patch%> Questions")
+/ fontstyle = ("Arial", 2.8%, true)
+/ position = (50%,85%)
+/ txbgcolor = (127,127,127)
+</text>
+
+<text Practice_notice>
+	/ items = ("Practice trial <%values.Index%>")
+	/ fontstyle = ("Arial", 3%, true)
+	/ position = (50%,5%)
+	/ txbgcolor = (127,127,127)
+	/ txcolor = red
+</text>
+
+***************************************************************************************************
+***************************************************************************************************
+***************************************************************************************************
+***************************************************************************************************
+<text cross>
+	/ items = ("+")
+	/ color = snow
+	/ txbgcolor = (127, 127, 127)
+	/ fontstyle = ("Arial",100pt)
+</text>
+
+<text x>
+	/ items = CP_x_coordinates
+	/ select = sequence
+</text>
+
+<text y>
+	/ items = CP_y_coordinates
+	/ select = sequence
+</text>
+***************************************************************************************************
+***************************************************************************************************
+<text p_response_instructions>
+/ items = ("Please click on the button that corresponds to whether the patch belongs to the image presented before, 
+and how confident you are.")
+/ fontstyle = ("Arial", 2.8%, true)
+/ txbgcolor = (127,127,127)
+/ position = (50,80)
+</text>
+
+<text notice_centre_mouse>
+/ items = ("Please click the green rectangle to continue")
+/ fontstyle = ("Arial", 3%, true)
+/ position = (50%,80%)
+/ txbgcolor = (127,127,127)
+</text>
+
+<shape centersquare>
+/ shape = rectangle
+/ size = (5%, 5%)
+/ position = (50%, 50%)
+/ color = (green)
+</shape>
+***************************************************************************************************
+***************************************************************************************************
+<text interval>
+/items = ("If you are ready, press SPACE BUTTON and move to next trial
+You have finished <%values.Index - values.num_prac_trials%> of <%values.num_trials + values.num_catch_trials%> trials")
+/ position = (50%,50%)
+/ fontstyle = ("Arial", 3%, true)
+/ txbgcolor = (127,127,127)
+</text>
+
+***************************************************************************************************
+***************************************************************************************************
+<text Catch>
+/items = ("Catch")
+/ position = (50%,50%)
+/ fontstyle = ("Arial", 15%, true)
+/ txcolor = (yellow)
+/ txbgcolor = (127,127,127) 
+</text>
+
+// words for catch trials
+<item catch_present_words>
+/ 1 = "CLICK: Yes 1"
+/ 2 = "CLICK: Yes 2"
+/ 3 = "CLICK: Yes 3"
+/ 4 = "CLICK: Yes 4"
+</item>
+<item catch_absent_words>
+/ 1 = "CLICK: No 1"
+/ 2 = "CLICK: No 2"
+/ 3 = "CLICK: No 3"
+/ 4 = "CLICK: No 4"
+</item>
+
+
+// Catch (absent and present) text for use in catch trial responses
+// Words are selected using a randomly assigned value of 1-4 determined in trial.catch_presentation_present/trial.catch_presentation_absent
+<text catch_absent>
+/ items = catch_absent_words
+/ select = values.catch_question
+/ vposition = values.textPosition
+/ fontstyle = ("Avenir next", values.MYfontsize, true, false, false, false, 5, 0)
+</text>
+<text catch_present>
+/ items = catch_present_words
+/ select = values.catch_question
+/ vposition = values.textPosition
+/ fontstyle = ("Avenir next", values.MYfontsize, true, false, false, false, 5, 0)
+</text>
+
+<list catch_present_words>
+/ items = (text.catch_present)
+/ selectionrate = always
+</list>
+
+<list catch_absent_words>
+/ items = (text.catch_absent)
+/ selectionrate = always
+</list>
+
+<text catch_interval>
+/items = ("press SPACEBAR to begin the next trial.")
+/ position = (50%,50%)
+/ fontstyle = ("Arial", 3%, true)
+/ txbgcolor = (127,127,127)
+</text>

@@ -1,0 +1,709 @@
+﻿***************************************************************************
+***************************************************************************
+			Online Experiment Viewing Distance Calibration
+***************************************************************************
+***************************************************************************
+
+
+Written by: Ariel Zeleznikow-Johnston (ariel.zeleznikow-johnston@monash.edu)
+
+Last updated: 2020-08-21 by Ariel Zeleznikow-Johnston
+
+Modified from code released by Millisecond Software written by Katja Borchert
+Link to original: https://www.millisecond.com/forums/Topic14608.aspx?Keywords=absoulte%20sizing
+
+Inspired by and stimulus borrowed from code by Qiseng Li
+https://github.com/QishengLi/virtual_chinrest/
+
+******************************************************************************************************************
+*******************************************************************************************************************
+	BACKGROUND INFO
+*******************************************************************************************************************
+*******************************************************************************************************************
+										*SCRIPT PURPOSE*
+
+This script runs a "mm to px" calibration procedure: It calculates how many pixels are needed
+on the current monitor (they differ) per mm and can be used to produce stimuli of absolute sizes on any computer screen.
+
+The procedure can be incorporated via the INCLUDE element into other scripts.
+Once this script is included, all its elements (e.g. block.calibration and expressions.ratio_pxpermm) are accessible 
+to the main script (see SizingDemo.iqx for an example).
+
+
+											*TASK* (modified from original)
+A line of a specified pixel length (default: 1000) is presented on the computer screen.
+The line is then adjusted to the size of a variety of known household objects
+Pressing '>' will increase the line by 2 pixels
+Pressing '<' will decrease the line by 2 pixels
+
+The script then calculates how many pixels are needed per mm (-> expressions.ratio_pxpermm) for the current monitor.
+
+
+Stimuli that require absolute sizing should be declared the following way:
+Example square with height = 3cm = 30mm
+
+/width = 1px * 30 * expressions.ratio_pxpermm 
+/height = 1px * 30 * expressions.ratio_pxpermm
+
+width and height are explicitly specified in pixels therefore start with: 1px * (length in mm) * calibrationratio
+
+***************************************************************************
+***************************************************************************
+Code
+***************************************************************************
+***************************************************************************
+
+// We have to choose an initial value for the size (width) of our calibration image
+// Need to then save the adjusted value later
+<values>
+/imagewidth_px = 550px
+/increment_px = 5px
+
+// misc values
+/radians_to_degrees = 57.2958
+/trial_duration = 75 
+/demo_length = 20000
+/demo_trial_count = 0
+/distance_threshold = 300%
+/screen_x_threshold = 230px
+
+// values for positioning (mm)
+/ thumb_size = 20
+/ line_size = 1px *  999 // just an initialisation value 
+/ calibration_image_size = values.line_size / ((2/19.44) / 1.40) //I honestly don't know how this was chosen
+
+// values for the blindspot calculations
+
+/blindspot_angle = 13.5 // empirically derived from previous studies
+
+/square_size = 7.5
+/square_x = 80%
+/square_y = 50%
+
+/circle_size = 7.5
+/circle_x_initial = 75%
+/circle_x = 75%
+/circle_y = 50%
+/increment_circle = 0.3%
+/blindspot_progress = 0
+
+// values we're trying to obtain
+/screen_size_x = -999
+/screen_size_y = -999
+/viewer_distance = -999
+/ratio_pxpermm = -999
+/DVA_to_distance = 1 //initialisation
+
+/radius_F = 1 //initialisation
+/radius_P = 1 // initialisation
+/r_F = 10000 // initialisation for stimulus size
+/R_P = 10000 // initialisation for scaled peripheral stimulus size
+
+
+
+</values>
+
+
+// This expression is used for calculating the ratio of pixels to mm
+// It relies on the fact that a standard wallet card is 85.6 mm wide
+<expressions>
+/ratio_pxpermm = values.imagewidth_px/85.6
+</expressions>
+
+// storing responses
+
+<list viewing_distance>
+</list>
+
+*******************************
+Instructions
+******************************
+
+********** initiation *******
+
+<text initiate_instructions>
+/items = ("Before starting the main experiment, we need to do some quick calibrations to ensure your
+screen is set up correctly.")
+/position = (50%, 25%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+<text initiate_warning>
+/items = ("Warning! It is critical that these calibrations are done correctly or you will be
+unable to do the experiment and we will be unable to approve your payment!")
+/position = (50%, 75%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+********** sizing *******
+
+<item instructions_size>
+/1 = "First, we need to determine the size of your screen.
+Take a credit card (or a drivers license, library card, any equivalent card),
+press it to the screen and adjust the image on your screen to be the same size as the card
+
+To increase the image width: press '2' on your keyboard
+To decrease the image width: press '1' on your keyboard
+
+When you are done, press <ENTER>."
+</item>
+
+<text instructions_size>
+/items = instructions_size
+/position = (50%, 85%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+<item size_title>
+/1 = "Size Calibration"
+</item>
+
+<text size_title>
+/items = size_title
+/position = (50%, 25%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txcolor = snow
+/ txbgcolor = (127,127,127)
+/erase = false
+</text>
+
+******* initial positioning ***********
+
+<text Calibration_Instruction_txt>
+/ items = ("Next, we need to get you to keep your head a fixed distance from the screen.
+This will ensure future images are the right size for your screen. On the next screen please:
+
+1. Keeping your arm straight, please touch your thumb to the centre of the screen in the oval
+2. While keeping your head in the same position, lower your arm.
+3. Please keep your head in this position for the remainder of the experiment.")
+/ hposition = 50%
+/ vposition = 70%
+/ fontstyle = ("Arial", 3%, true)
+/ txcolor = yellow
+/ txbgcolor = (127,127,127)
+</text>
+
+<text Next_key>
+/ items = ("Press SPACE to continue")
+/ position = (80%,85%)
+/ fontstyle = ("Arial", 2.8%, true)
+/ txcolor = white
+/ txbgcolor = (127,127,127)
+</text>
+
+<item positioning_title>
+/1 = "Position Calibration"
+</item>
+
+<text positioning_title>
+/items = positioning_title
+/position = (50%, 90%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txcolor = blue
+/erase = false
+</text>
+
+<text calibration_position_instructions>
+/ items = ("
+1. While keeping your arm straight touch your thumb to the centre of the screen in the oval
+2. Keep your head in the same position, but lower and relax your arm.
+3. Please keep your head in this position for the remainder of the experiment.")
+/ fontstyle = ("Arial", 3%, true)
+/ position = (50%,15%)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+
+******* angle determination ***********
+<item instructions_blindspot_initiate>
+/1 = "Lastly, we need to know how far away your head is from the screen.
+Please keep your head in the same position as before.
+
+Over the next few pages we will explain how we can work out how far you are sitting from the screen.
+Please pay attention and follow all the instructions carefully.
+
+These first few pages will be INSTRUCTIONS ONLY. You will be instructed when the calibrations start.
+
+When ready, press SPACE to continue and carefully follow the instructions on the next page.
+"
+</item>
+
+<text instructions_only>
+/items = ("INSTRUCTIONS ONLY")
+/position = (50%, 20%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+<text instructions_blindspot_initiate>
+/items = instructions_blindspot_initiate
+/position = (50%, 40%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+<text ball_visible>
+/items = ("VISIBLE")
+/position = (50%, 40%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ color = grey
+</text>
+
+<text ball_invisible>
+/items = ("INVISIBLE")
+/position = (50%, 36%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ color = white
+</text>
+
+<text press_enter_now>
+/items = ("Press <ENTER> now!")
+/position = (50%, 75%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ color = yellow
+</text>
+
+<text fixation_centre>
+	/ items = ("+")
+	/ position = (50%,50%)
+	/ color = snow
+	/ txbgcolor = (127, 127, 127)
+	/ fontstyle = ("Arial",50pt)
+</text>
+
+<text keyboard>
+/items = ("1. Put a finger on <ENTER> on the keyboard.")
+/position = (50%, 70%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+<text close_eye>
+/items = ("2. Close your right eye.")
+/position = (50%, 70%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+<text fixation>
+/items = ("3. Stare at the middle of the screen, keeping your head in the same position as before.
+  Keep your right eye closed.")
+/position = (50%, 70%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+<text square_focus>
+/items = ("4. Without moving your head or face, use your left eye to focus on the black square.
+  Keep your right eye closed and don't move your head.")
+/position = (50%, 70%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+<text moving_ball>
+/items = ("5. During the calibration task, a flickering red ball will disappear as it moves from right to left. 
+Ignore the flickering.
+Keep your right eye closed, stare at the black square and don't move your head.")
+/position = (50%, 70%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+<text ball_arrow>
+/items = ("<---- Ball movement")
+/position = (values.circle_x_initial, 45%)
+/ fontstyle = ("Arial", 2.5%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+<text stare_square>
+/items = ("Stare at the square")
+/position = (values.square_x, 45%)
+/ fontstyle = ("Arial", 2.5%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+<text disappear>
+/items = ("6. Press the <ENTER> key as soon as the ball disappears properly from your eye sight (not just due to flickering)
+or running off the edge of the screen).
+ Keep your right eye closed, stare at the black square and don't move your head.")
+/position = (50%, 70%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+<text repeat>
+/items = ("7. The next page will show a demonstration of the calibration task for a few seconds.
+During the actual calibration, you will need to press <ENTER> when the ball disappears.
+ 
+You will do this five times so we can make sure we get the right distance. 
+The ball will reset each time.
+ 
+Keep your right eye closed, stare at the black square and don't move your head.")
+/position = (50%, 70%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+<text findblindspot_initiate>
+/items = ("NEXT WILL BE THE ACTUAL CALIBRATION.
+ 
+ Remember to keep your right eye closed, stare at the black square and don't move your head.
+ 
+ Press the <ENTER> key as soon as the ball disappears properly from your eye sight (not just due to flickering
+or running off the edge of the screen).
+
+When ready, press SPACE to start the viewing distance calibration.")
+/position = (50%, 20%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txbgcolor = (127,127,127)
+/ txcolor = yellow
+</text>
+
+<item blindspot_title>
+/1 = "Angle Calibration"
+</item>
+
+<text blindspot_title>
+/items = blindspot_title
+/position = (50%, 25%)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+/ txcolor = snow
+/erase = false
+</text>
+
+<text blindspot_progress>
+/items = ("<%values.blindspot_progress%> of 5 angle calibrations complete")
+/position = (50%, 95%)
+/erase = false
+</text>
+
+<text success>
+/items = ("The calibrations were successful!
+
+Your viewing distance is <%round(list.viewing_distance.median)/10%> cm.
+
+Press SPACE to continue.")
+/position = (50%, 50%)
+/ fontstyle = ("Arial", 5%, false, false, false, false, 5, 1)
+/ txcolor = yellow
+/ txbgcolor = grey
+</text>
+
+<text failure>
+/items = ("Unfortunately the calibrations were unsuccessful.
+
+Your viewing distance is calculated as <%round(list.viewing_distance.median)/10%> cm.
+
+Please press CTRL-Q to quit the experiment.")
+/ fontstyle = ("Arial", 5%, false, false, false, false, 5, 1)
+/position = (50%, 50%)
+/ txcolor = red
+/ txbgcolor = grey
+</text>
+
+*****************************
+Stimuli
+*****************************
+
+************ sizing *********
+
+// Using a credit card
+<picture card>
+ // caption = "Please press your card to this picture and adjust until they match in size"
+ / size = (values.imagewidth_px, values.imagewidth_px*0.62) // 0.62 is ratio of height:width for a standard card
+ / items=("card.png")
+ / position = (10%, 50%)
+ / halign = left
+ </picture>
+ 
+************ initial positioning *****
+
+<video Calibration_Instruction_Page1_gif>
+/ items = ("CalibrationInstruction.gif")
+/ hposition = 50%
+/ vposition = 30%
+/ loop = true
+/ size = (40%,40%)
+</video>
+
+<shape calibration_image>
+/ position = (50%,50%)
+/ shape = rectangle
+/ color = grey
+/ height = values.calibration_image_size
+/ width = values.calibration_image_size
+</shape>
+
+<shape calibration_line>
+/ position = (50%,50%)
+/ shape = rectangle
+/ color = black
+/ width = values.line_size 
+/ height = 20px
+</shape>
+
+<picture calibration_line_pic>
+/ position = (50%,53%)
+/ items = ("CalibrationLine.png")
+/ width = values.line_size
+/ height = values.line_size * 3
+</picture>
+
+************ blind spot ********* 
+
+<shape square>
+/ position = (values.square_x, values.square_y)
+/ shape = rectangle
+/ color = black
+// size = (1px * values.square_size * expressions.ratio_pxperm, 1px * values.square_size * expressions.ratio_pxperm)
+/width = 1px * values.square_size * expressions.ratio_pxpermm 
+/height = 1px * values.square_size * expressions.ratio_pxpermm
+/erase = false // needed to prevent flickering
+
+</shape>
+
+<shape circle>
+/position = (values.circle_x, values.circle_y)
+/shape = circle
+/ color = red
+// size = (1px * values.circle_size * expressions.ratio_pxperm, 1px * values.circle_size * expressions.ratio_pxperm)
+/width = 1px * values.circle_size * expressions.ratio_pxpermm 
+/height = 1px * values.circle_size * expressions.ratio_pxpermm
+</shape>
+*****************************
+Trials
+*****************************
+<trial initiate>
+/stimulusframes = [1 = initiate_instructions, initiate_warning, Next_key]
+/validresponse = (57)
+</trial>
+
+<trial changesizes>
+/ stimulusframes = [1 = card, instructions_size, size_title]
+/validresponse = (2,3,28)
+/ontrialend = [if (trial.changesizes.response == 2) {values.imagewidth_px -= values.increment_px};
+	values.screen_size_x = (1 / expressions.ratio_pxpermm) * display.screenwidth;
+	values.screen_size_y = (1 / expressions.ratio_pxpermm) * display.screenheight;
+	values.line_size = values.thumb_size * expressions.ratio_pxpermm; clearscreen]
+/ontrialend = [if (trial.changesizes.response == 3) {values.imagewidth_px += values.increment_px};
+	values.screen_size_x = (1 / expressions.ratio_pxpermm) * display.screenwidth;
+	values.screen_size_y = (1 / expressions.ratio_pxpermm) * display.screenheight; 
+	values.line_size = values.thumb_size * expressions.ratio_pxpermm; clearscreen]
+/branch = [if (trial.changesizes.response != 28) {
+	values.screen_size_x = (1 / expressions.ratio_pxpermm) * display.screenwidth;
+	values.screen_size_y = (1 / expressions.ratio_pxpermm) * display.screenheight;
+	values.line_size = values.thumb_size * expressions.ratio_pxpermm;
+	trial.changesizes;
+}]
+</trial>
+
+<trial initial_positioning1>
+/ stimulusframes = [1 = Calibration_Instruction_Page1_gif,Calibration_Instruction_txt,Next_key]
+/ validresponse = (57)
+/ branch = [clearscreen; trial.initial_positioning2]
+</trial>
+
+<trial initial_positioning2>
+/ stimulusframes = [1 = calibration_position_instructions, calibration_line_pic,Back_button, Next_key]
+/ validresponse = (57,48)
+/ branch = [if (trial.initial_positioning2.response == 48) trial.initial_positioning1]
+</trial>
+
+<trial instructions_blindspot_initiate>
+/ stimulusframes = [1 = instructions_blindspot_initiate, Next_key]
+/ validresponse = (57)
+/branch = [if(trial.instructions_blindspot_initiate.response == 57) trial.instructions_keyboard_1]
+</trial>
+
+<trial instructions_keyboard_1>
+/ stimulusframes = [1 = keyboard, Next_key,instructions_only,Back_button]
+/ validresponse = (57,48)
+/branch = [if(trial.instructions_keyboard_1.response == 57) trial.instructions_close_eye_2]
+/ branch = [if (trial.instructions_keyboard_1.response == 48) trial.instructions_blindspot_initiate]
+</trial>
+
+<trial instructions_close_eye_2>
+/ stimulusframes = [1 = close_eye, Next_key,instructions_only,Back_button]
+/branch = [if(trial.instructions_close_eye_2.response == 57) trial.instructions_fixation_3]
+/branch = [if(trial.instructions_close_eye_2.response == 48) trial.instructions_keyboard_1]
+/ validresponse = (57,48)
+</trial>
+
+<trial instructions_fixation_3>
+/ stimulusframes = [1 = fixation, Next_key, fixation_centre,instructions_only,Back_button]
+/branch = [if(trial.instructions_fixation_3.response == 57) trial.instructions_square_focus_4]
+/branch = [if(trial.instructions_fixation_3.response == 48) trial.instructions_close_eye_2]
+/ validresponse = (57,48)
+</trial>
+
+<trial instructions_square_focus_4>
+/ stimulusframes = [1 = square_focus, square, Next_key, fixation_centre, stare_square,instructions_only,Back_button]
+/branch = [if(trial.instructions_square_focus_4.response == 57) trial.instructions_moving_ball_5]
+/branch = [if(trial.instructions_square_focus_4.response == 48) trial.instructions_fixation_3]
+/ validresponse = (57,48)
+</trial>
+
+<trial instructions_moving_ball_5>
+/ stimulusframes = [1 = moving_ball, circle, Next_key, fixation_centre, square, ball_arrow,instructions_only,Back_button]
+/branch = [if(trial.instructions_moving_ball_5.response == 57) trial.instructions_disappear_6]
+/branch = [if(trial.instructions_moving_ball_5.response == 48) trial.instructions_square_focus_4]
+/ validresponse = (57,48)
+</trial>
+
+<trial instructions_disappear_6>
+/ stimulusframes = [1 = disappear, Next_key, fixation_centre, square,instructions_only,Back_button]
+/branch = [if(trial.instructions_disappear_6.response == 57) trial.instructions_repeat_7]
+/branch = [if(trial.instructions_disappear_6.response == 48) trial.instructions_moving_ball_5]
+/ validresponse = (57,48)
+</trial>
+
+<trial instructions_repeat_7>
+/ stimulusframes = [1 = repeat, Next_key,instructions_only,Back_button]
+/branch = [if(trial.instructions_repeat_7.response == 48) trial.instructions_disappear_6]
+/ validresponse = (57,48)
+</trial>
+
+<trial findblindspot_demo>
+/ ontrialbegin = [
+	if (values.circle_x != 0){
+			values.circle_x -= values.increment_circle;
+	} else {
+		values.circle_x = values.circle_x_initial; // return it to it's initial position
+	}
+	if ((values.circle_x < 50%) && (values.circle_x > 40%)){
+			text.ball_invisible.textcolor = snow;
+			text.ball_visible.textcolor = grey;
+			shape.circle.color = grey;
+			text.press_enter_now.textcolor = yellow;
+	} else {
+			text.ball_invisible.textcolor = grey;
+			text.ball_visible.textcolor = white;
+			text.press_enter_now.textcolor = grey;
+			shape.circle.color = red;
+	}
+	
+]
+/ recorddata = false
+/stimulusframes = [1 = circle, square, ball_invisible, ball_visible, press_enter_now] //instructions_blindspot_demo, 
+/ trialduration = values.trial_duration
+/branch = [if (values.demo_length > values.demo_trial_count) { // make them sit through the demo for as long as we feel, then progress
+	values.demo_trial_count += values.trial_duration; // add the trial length
+	trial.findblindspot_demo;
+	} else {
+		values.circle_x = values.circle_x_initial; // return it to the starting position
+		}
+	]
+/ ontrialend = [if (trial.findblindspot_demo.response != 57) {
+	trial.findblindspot_demo;
+	} else {
+		values.circle_x = values.circle_x_initial; // return it to the starting position
+		}
+]
+
+</trial>
+
+<trial findblindspot_initiate> // pause before starting next phase
+/validresponse = (57)
+/ stimulusframes = [1 = findblindspot_initiate, initiate_warning, Next_key]
+</trial>
+
+<trial findblindspot>
+/ ontrialbegin = [		
+	shape.circle.color = red;
+	if (values.circle_x != 0){
+			values.circle_x -= values.increment_circle
+	} else {
+		values.circle_x = values.circle_x_initial // return it to it's initial position
+	}
+	
+]
+/validresponse = (28)
+/stimulusframes = [1 = circle, square, blindspot_progress]
+/ trialduration = values.trial_duration
+/ recorddata = false
+/branch = [if (trial.findblindspot.response != 28) {
+	trial.findblindspot;
+	} else {
+		values.viewer_distance = (((values.square_x - values.circle_x)*display.screenwidth/100) / 
+			expressions.ratio_pxpermm) / 
+			tan(values.blindspot_angle/values.radians_to_degrees);
+		list.viewing_distance.appenditem(values.viewer_distance);
+		values.ratio_pxpermm = expressions.ratio_pxpermm * 1;
+		values.circle_x = values.circle_x_initial; // return it to the starting position
+		values.DVA_to_distance = values.viewer_distance*tan(1/values.radians_to_degrees); // converts 1 DVA to X mm
+		values.radius_F = 1px * values.DVA_to_distance * values.ratio_pxpermm * values.radius_central; 
+		values.radius_P = 1px * values.DVA_to_distance * values.ratio_pxpermm * values.radius_peripheral;
+		values.r_F = 1px * values.DVA_to_distance * values.ratio_pxpermm * values.stimulus_size;
+		values.R_P = 1px * values.peripheral_scale * values.r_F;
+		values.blindspot_progress +=1;
+		}
+	]
+</trial>
+
+<trial feedback>
+/validresponse = (57)
+/ontrialbegin = [
+	if(list.viewing_distance.median > values.distance_threshold){
+		if(values.screen_size_x > values.screen_x_threshold){
+				trial.feedback.insertstimulusframe(text.success, 1);
+				} else {
+					trial.feedback.insertstimulusframe(text.failure, 1);
+				} 
+	} else {
+		trial.feedback.insertstimulusframe(text.failure, 1);
+	}
+]
+/ branch = [
+	if(list.viewing_distance.median > values.distance_threshold){
+		if(values.screen_size_x > values.screen_x_threshold){
+				values.blindspot_progress +=1; // unnecessary
+				} else {
+					trial.feedback;
+				} 
+	} else {
+		trial.feedback;
+	}
+]
+
+</trial>
+*****************************
+Blocks
+*****************************
+<block calibration>
+/trials = [1 = initiate; 2 = changesizes; 3 = initial_positioning1; 4 = instructions_blindspot_initiate; 5 = findblindspot_demo; 6 = findblindspot_initiate;  7-11 = findblindspot; 12 = feedback]
+/ onblockend = [values.viewer_distance = list.viewing_distance.median;
+				values.DVA_to_distance = values.viewer_distance*tan(1/values.radians_to_degrees);
+				values.radius_F = 1px * values.DVA_to_distance * values.ratio_pxpermm * values.radius_central; 
+				values.radius_P = 1px * values.DVA_to_distance * values.ratio_pxpermm * values.radius_peripheral;
+				values.r_F = 1px * values.DVA_to_distance * values.ratio_pxpermm * values.stimulus_size;
+				values.R_P = 1px * values.peripheral_scale * values.r_F;]
+</block>
+
+
+*******************************************************************************************************************
+												End of File
+*******************************************************************************************************************
+
