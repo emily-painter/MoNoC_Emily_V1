@@ -154,9 +154,6 @@
 
 
 
-
-
-
 <picture CP_patch>
 	/ size = (values.present_image_size/3,values.present_image_size/3)
 	/ items = CP_patch

@@ -1,6 +1,6 @@
 ﻿<include>
-/ file = "calibration_demo.iqx"
-/ file = "SchizotypySurvey.iqx"
+// / file = "calibration_demo.iqx"
+// / file = "SchizotypySurvey.iqx"
 / file = "participant_demographics.iqx"
 / file = "PictureAndText_V2.iqx"
 / file = "Instruction.iqx"

@@ -153,6 +153,9 @@
 /4 = "maskCropc_045.jpg"
 </item>
 
+****
+is there a problem with this???
+****
 
 <item CP_patch>
 /1 = "cong_124_1_p.jpg"
@@ -200,7 +203,8 @@
 /43 = "cong_8_2_p.jpg"
 </item>
 
-<item CP_x_coordinates>
+*****
+old nums:
 /1 = "33.3%"
 /2 = "33.3%"
 /3 = "66.7%"
@@ -244,9 +248,57 @@
 /41 = "50%"
 /42 = "33.3%"
 /43 = "50%"
+*****
+
+<item CP_x_coordinates>
+/1 = "50%"
+/2 = "66.7%"
+/3 = "54.17%"
+/4 = "66.7%"
+/5 = "50%"
+/6 = "54.17%"
+/7 = "33.3%"
+/8 = "45.83%"
+/9 = "50%"
+/10 = "45.83%"
+/11 = "50%"
+/12 = "50%"
+/13 = "50%"
+/14 = "33.3%"
+/15 = "33.3%"
+/16 = "33.3%"
+/17 = "66.7%"
+/18 = "66.7%"
+/19 = "66.7%"
+/20 = "33.3%"
+/21 = "50%"
+/22 = "50%"
+/23 = "33.3%"
+/24 = "54.17%"
+/25 = "50%"
+/26 = "66.7%"
+/27 = "50%"
+/28 = "66.7%"
+/29 = "33.3%"
+/30 = "45.83%"
+/31 = "66.7%"
+/32 = "54.17%"
+/33 = "66.7%"
+/34 = "33.3%"
+/35 = "50%"
+/36 = "66.7%"
+/37 = "54.17%"
+/38 = "66.7%"
+/39 = "54.17%"
+/40 = "45.83%"
+/41 = "54.17%"
+/42 = "66.7%"
+/43 = "54.17%"
+
 </item>
 
-<item CP_y_coordinates>
+*****
+old nums:
 /1 = "25%"
 /2 = "75%"
 /3 = "50%"
@@ -290,6 +342,51 @@
 /41 = "25%"
 /42 = "75%"
 /43 = "25%"
+******
+<item CP_y_coordinates>
+/1 = "75%"
+/2 = "50%"
+/3 = "50%"
+/4 = "50%"
+/5 = "25%"
+/6 = "50%"
+/7 = "56.25%"
+/8 = "56.25%"
+/9 = "56.25%"
+/10 = "50%"
+/11 = "25%"
+/12 = "56.25%"
+/13 = "43.75%"
+/14 = "56.25%"
+/15 = "56.25%"
+/16 = "25%"
+/17 = "25%"
+/18 = "75%"
+/19 = "56.25%"
+/20 = "25%"
+/21 = "43.75%"
+/22 = "25%"
+/23 = "75%"
+/24 = "50%"
+/25 = "43.75%"
+/26 = "56.25%"
+/27 = "50%"
+/28 = "43.75%"
+/29 = "50%"
+/30 = "43.75%"
+/31 = "65.25%"
+/32 = "75%"
+/33 = "43.75%"
+/34 = "25%"
+/35 = "43.75%"
+/36 = "56.75%"
+/37 = "75%"
+/38 = "50%"
+/39 = "50%"
+/40 = "56.25%"
+/41 = "75%"
+/42 = "43.75%"
+/43 = "50%"
 </item>
 
 <picture Patch_locate_1_present>
@@ -381,18 +478,36 @@
 <picture nPatch_locate_1_resource>
   / size = (values.present_image_size/3,values.present_image_size/3)
   / position = (values.location_horizontal_1,values.location_vertical_1)
-  /items = ("patch0006301.jpg",
-"patch0001201.jpg",
-"patch0003037.jpg",
-"patch0002653.jpg",
-"patch0005593.jpg",
-"patch0005581.jpg",
-"patch0003301.jpg",
-"patch0000889.jpg",
-"patch0002353.jpg",
-"patch0005365.jpg",
-"patch0004357.jpg",
-"patch0000517.jpg",
+  /items = ("im0001805_1.jpg",
+"im0003723_1.jpg",
+"im0003372_1.jpg",
+"im0002385_1.jpg",
+"im0001329_1.jpg",
+"im0003508_1.jpg",
+"im0001876_1.jpg",
+"im0001229_1.jpg",
+"im0006833_1.jpg",
+"im0004304_1.jpg",
+"im0001898_1.jpg",
+"im0002213_1.jpg",
+"im0002037_1.jpg",
+"im0000743_1.jpg",
+"im0001079_1.jpg",
+"im0001549_1.jpg",
+"im0000823_1.jpg",
+"im0008992_1.jpg",
+"im0000664_1.jpg",
+"im0000805_1.jpg",
+"im0000625_1.jpg",
+"im0007549_1.jpg",
+"im0001418_1.jpg",
+"im0008010_1.jpg",
+"im0004351_1.jpg",
+"im0001406_1.jpg",
+"im0000634_1.jpg",
+"im0003967_1.jpg",
+"im0004865_1.jpg",
+"im0007205_1.jpg",
 )
   / select = noreplace
 </picture>
@@ -400,27 +515,36 @@
 <picture nPatch_locate_2_resource>
   / size = (values.present_image_size/3,values.present_image_size/3)
   / position = (values.location_horizontal_2,values.location_vertical_1)
-  /items = ("patch0002174.jpg",
-"patch0005546.jpg",
-"patch0000266.jpg",
-"patch0005858.jpg",
-"patch0003170.jpg",
-"patch0003914.jpg",
-"patch0001010.jpg",
-"patch0000722.jpg",
-"patch0003518.jpg",
-"patch0003086.jpg",
-"patch0000146.jpg",
-"patch0006086.jpg",
-"patch0001094.jpg",
-"patch0003194.jpg",
-"patch0002918.jpg",
-"patch0005306.jpg",
-"patch0000890.jpg",
-"patch0005786.jpg",
-"patch0005258.jpg",
-"patch0002570.jpg",
-"patch0002630.jpg",
+  /items = ("im0000446_2.jpg",
+"im0000964_2.jpg",
+"im0001429_2.jpg",
+"im0002173_2.jpg",
+"im0000986_2.jpg",
+"im0002197_2.jpg",
+"im0002813_2.jpg",
+"im0000811_2.jpg",
+"im0000457_2.jpg",
+"im0001079_2.jpg",
+"im0001133_2.jpg",
+"im0001443_2.jpg",
+"im0001715_2.jpg",
+"im0000333_2.jpg",
+"im0000954_2.jpg",
+"im0003143_2.jpg",
+"im0000113_2.jpg",
+"im0004709_2.jpg",
+"im0002748_2.jpg",
+"im0001628_2.jpg",
+"im0001923_2.jpg",
+"im0000847_2.jpg",
+"im0001487_2.jpg",
+"im0004865_2.jpg",
+"im0001780_2.jpg",
+"im0001669_2.jpg",
+"im0000805_2.jpg",
+"im0001549_2.jpg",
+"im0002045_2.jpg",
+"im0002277_2.jpg",
 )
   / select = noreplace
 </picture>
@@ -428,26 +552,36 @@
 <picture nPatch_locate_3_resource>
   / size = (values.present_image_size/3,values.present_image_size/3)
   / position = (values.location_horizontal_3,values.location_vertical_1)
-  /items = ("patch0003903.jpg",
-"patch0004875.jpg",
-"patch0005415.jpg",
-"patch0006735.jpg",
-"patch0002235.jpg",
-"patch0002391.jpg",
-"patch0005583.jpg",
-"patch0005043.jpg",
-"patch0005115.jpg",
-"patch0001383.jpg",
-"patch0004923.jpg",
-"patch0003747.jpg",
-"patch0002607.jpg",
-"patch0002391.jpg",
-"patch0006387.jpg",
-"patch0001695.jpg",
-"patch0006639.jpg",
-"patch0005031.jpg",
-"patch0004539.jpg",
-"patch0006111.jpg",
+  /items = ("im0001402_3.jpg",
+"im0001321_3.jpg",
+"im0008992_3.jpg",
+"im0000183_3.jpg",
+"im0004557_3.jpg",
+"im0004875_3.jpg",
+"im0003315_3.jpg",
+"im0000385_3.jpg",
+"im0000964_3.jpg",
+"im0001167_3.jpg",
+"im0002537_3.jpg",
+"im0000529_3.jpg",
+"im0002774_3.jpg",
+"im0000402_3.jpg",
+"im0002320_3.jpg",
+"im0001659_3.jpg",
+"im0002991_3.jpg",
+"im0002702_3.jpg",
+"im0004351_3.jpg",
+"im0004014_3.jpg",
+"im0001136_3.jpg",
+"im0002485_3.jpg",
+"im0000664_3.jpg",
+"im0000126_3.jpg",
+"im0002729_3.jpg",
+"im0001628_3.jpg",
+"im0001517_3.jpg",
+"im0003967_3.jpg",
+"im0001981_3.jpg",
+"im0001998_3.jpg",
 )
   / select = noreplace
 </picture>
@@ -455,18 +589,36 @@
 <picture nPatch_locate_4_resource>
   / size = (values.present_image_size/3,values.present_image_size/3)
   / position = (values.location_horizontal_1,values.location_vertical_2)
-  /items = ("patch0006209.jpg",
-"patch0003161.jpg",
-"patch0003329.jpg",
-"patch0001313.jpg",
-"patch0000509.jpg",
-"patch0000629.jpg",
-"patch0000989.jpg",
-"patch0004997.jpg",
-"patch0005885.jpg",
-"patch0000473.jpg",
-"patch0003209.jpg",
-"patch0005105.jpg",
+  /items = ("im0004466_4.jpg",
+"im0003522_4.jpg",
+"im0002141_4.jpg",
+"im0000655_4.jpg",
+"im0000914_4.jpg",
+"im0004557_4.jpg",
+"im0000113_4.jpg",
+"im0001669_4.jpg",
+"im0000631_4.jpg",
+"im0007944_4.jpg",
+"im0002748_4.jpg",
+"im0001679_4.jpg",
+"im0001581_4.jpg",
+"im0000277_4.jpg",
+"im0002485_4.jpg",
+"im0000205_4.jpg",
+"im0000293_4.jpg",
+"im0001734_4.jpg",
+"im0000376_4.jpg",
+"im0003230_4.jpg",
+"im0003222_4.jpg",
+"im0002667_4.jpg",
+"im0000558_4.jpg",
+"im0002260_4.jpg",
+"im0008934_4.jpg",
+"im0004875_4.jpg",
+"im0002201_4.jpg",
+"im0002971_4.jpg",
+"im0001445_4.jpg",
+"im0001387_4.jpg",
 )
   / select = noreplace
 </picture>
@@ -474,16 +626,36 @@
 <picture nPatch_locate_5_resource>
   / size = (values.present_image_size/3,values.present_image_size/3)
   / position = (values.location_horizontal_3,values.location_vertical_2)
-  /items = ("patch0006222.jpg",
-"patch0001206.jpg",
-"patch0005970.jpg",
-"patch0002766.jpg",
-"patch0006138.jpg",
-"patch0001662.jpg",
-"patch0003774.jpg",
-"patch0004926.jpg",
-"patch0006786.jpg",
-"patch0002778.jpg",
+  /items = ("im0003930_5.jpg",
+"im0000333_5.jpg",
+"im0000538_5.jpg",
+"im0000638_5.jpg",
+"im0001349_5.jpg",
+"im0003837_5.jpg",
+"im0003329_5.jpg",
+"im0000277_5.jpg",
+"im0001361_5.jpg",
+"im0001805_5.jpg",
+"im0001418_5.jpg",
+"im0002381_5.jpg",
+"im0002221_5.jpg",
+"im0001076_5.jpg",
+"im0001445_5.jpg",
+"im0000056_5.jpg",
+"im0007483_5.jpg",
+"im0000625_5.jpg",
+"im0000393_5.jpg",
+"im0001277_5.jpg",
+"im0000706_5.jpg",
+"im0001610_5.jpg",
+"im0001137_5.jpg",
+"im0004719_5.jpg",
+"im0004304_5.jpg",
+"im0000245_5.jpg",
+"im0002702_5.jpg",
+"im0000939_5.jpg",
+"im0009012_5.jpg",
+"im0001748_5.jpg",
 )
   / select = noreplace
 </picture>
@@ -491,15 +663,36 @@
 <picture nPatch_locate_6_resource>
   / size = (values.present_image_size/3,values.present_image_size/3)
   / position = (values.location_horizontal_1,values.location_vertical_3)
-  /items = ("patch0005347.jpg",
-"patch0006595.jpg",
-"patch0005407.jpg",
-"patch0006427.jpg",
-"patch0002119.jpg",
-"patch0000715.jpg",
-"patch0002419.jpg",
-"patch0005371.jpg",
-"patch0003991.jpg",
+  /items = ("im0007733_6.jpg",
+"im0001457_6.jpg",
+"im0008934_6.jpg",
+"im0001105_6.jpg",
+"im0002774_6.jpg",
+"im0002487_6.jpg",
+"im0001883_6.jpg",
+"im0002716_6.jpg",
+"im0002434_6.jpg",
+"im0000641_6.jpg",
+"im0000499_6.jpg",
+"im0008777_6.jpg",
+"im0000631_6.jpg",
+"im0000126_6.jpg",
+"im0001903_6.jpg",
+"im0004047_6.jpg",
+"im0002385_6.jpg",
+"im0000655_6.jpg",
+"im0001234_6.jpg",
+"im0001493_6.jpg",
+"im0007205_6.jpg",
+"im0000584_6.jpg",
+"im0003415_6.jpg",
+"im0002209_6.jpg",
+"im0009120_6.jpg",
+"im0008811_6.jpg",
+"im0001402_6.jpg",
+"im0001517_6.jpg",
+"im0000441_6.jpg",
+"im0008010_6.jpg",
 )
   / select = noreplace
 </picture>
@@ -507,27 +700,36 @@
 <picture nPatch_locate_7_resource>
   / size = (values.present_image_size/3,values.present_image_size/3)
   / position = (values.location_horizontal_2,values.location_vertical_3)
-  /items = ("patch0003081.jpg",
-"patch0002433.jpg",
-"patch0005073.jpg",
-"patch0001425.jpg",
-"patch0006165.jpg",
-"patch0002781.jpg",
-"patch0002433.jpg",
-"patch0003885.jpg",
-"patch0002301.jpg",
-"patch0002193.jpg",
-"patch0004761.jpg",
-"patch0007041.jpg",
-"patch0001929.jpg",
-"patch0002409.jpg",
-"patch0004713.jpg",
-"patch0000201.jpg",
-"patch0000189.jpg",
-"patch0000945.jpg",
-"patch0006885.jpg",
-"patch0005709.jpg",
-"patch0005493.jpg",
+  /items = ("im0000875_7.jpg",
+"im0001348_7.jpg",
+"im0002153_7.jpg",
+"im0000954_7.jpg",
+"im0001079_7.jpg",
+"im0002244_7.jpg",
+"im0000986_7.jpg",
+"im0003553_7.jpg",
+"im0008478_7.jpg",
+"im0002860_7.jpg",
+"im0001180_7.jpg",
+"im0002037_7.jpg",
+"im0000402_7.jpg",
+"im0004538_7.jpg",
+"im0004047_7.jpg",
+"im0003279_7.jpg",
+"im0000939_7.jpg",
+"im0001998_7.jpg",
+"im0000069_7.jpg",
+"im0001413_7.jpg",
+"im0001090_7.jpg",
+"im0000589_7.jpg",
+"im0000631_7.jpg",
+"im0001387_7.jpg",
+"im0000341_7.jpg",
+"im0001965_7.jpg",
+"im0001493_7.jpg",
+"im0002385_7.jpg",
+"im0006488_7.jpg",
+"im0009039_7.jpg",
 )
   / select = noreplace
 </picture>
@@ -535,21 +737,36 @@
 <picture nPatch_locate_8_resource>
   / size = (values.present_image_size/3,values.present_image_size/3)
   / position = (values.location_horizontal_3,values.location_vertical_3)
-  /items = ("patch0003562.jpg",
-"patch0001870.jpg",
-"patch0001126.jpg",
-"patch0005314.jpg",
-"patch0003994.jpg",
-"patch0006766.jpg",
-"patch0000922.jpg",
-"patch0005758.jpg",
-"patch0005578.jpg",
-"patch0000526.jpg",
-"patch0003238.jpg",
-"patch0005578.jpg",
-"patch0005866.jpg",
-"patch0001030.jpg",
-"patch0001690.jpg",
+  /items = ("im0000151_8.jpg",
+"im0000293_8.jpg",
+"im0001137_8.jpg",
+"im0001878_8.jpg",
+"im0002419_8.jpg",
+"im0001413_8.jpg",
+"im0003522_8.jpg",
+"im0002837_8.jpg",
+"im0007924_8.jpg",
+"im0001824_8.jpg",
+"im0009039_8.jpg",
+"im0000402_8.jpg",
+"im0002164_8.jpg",
+"im0003003_8.jpg",
+"im0001418_8.jpg",
+"im0000341_8.jpg",
+"im0000958_8.jpg",
+"im0000584_8.jpg",
+"im0001006_8.jpg",
+"im0001445_8.jpg",
+"im0001734_8.jpg",
+"im0001487_8.jpg",
+"im0003723_8.jpg",
+"im0001669_8.jpg",
+"im0004557_8.jpg",
+"im0008736_8.jpg",
+"im0004709_8.jpg",
+"im0000847_8.jpg",
+"im0002277_8.jpg",
+"im0000996_8.jpg",
 )
   / select = noreplace
 </picture>
@@ -557,15 +774,36 @@
 <picture nPatch_locate_9_resource>
   / size = (values.present_image_size/6,values.present_image_size/6)
   / position = (values.location_horizontal_4,values.location_vertical_4)
-  /items = ("patch0005471.jpg",
-"patch0000791.jpg",
-"patch0005495.jpg",
-"patch0006647.jpg",
-"patch0003227.jpg",
-"patch0001967.jpg",
-"patch0001247.jpg",
-"patch0000335.jpg",
-"patch0001367.jpg",
+  /items = ("im0002657_9.jpg",
+"im0002774_9.jpg",
+"im0000293_9.jpg",
+"im0000958_9.jpg",
+"im0000847_9.jpg",
+"im0002537_9.jpg",
+"im0003967_9.jpg",
+"im0001207_9.jpg",
+"im0003106_9.jpg",
+"im0002487_9.jpg",
+"im0000041_9.jpg",
+"im0002153_9.jpg",
+"im0001329_9.jpg",
+"im0004709_9.jpg",
+"im0000003_9.jpg",
+"im0001517_9.jpg",
+"im0001418_9.jpg",
+"im0001501_9.jpg",
+"im0002949_9.jpg",
+"im0001124_9.jpg",
+"im0002975_9.jpg",
+"im0001515_9.jpg",
+"im0000151_9.jpg",
+"im0000628_9.jpg",
+"im0002589_9.jpg",
+"im0007924_9.jpg",
+"im0000558_9.jpg",
+"im0001136_9.jpg",
+"im0001981_9.jpg",
+"im0000641_9.jpg",
 )
   / select = noreplace
 </picture>
@@ -727,7 +965,8 @@
 /43 = "Incong" 
 </item>
 
-<item Object_Patch>
+********
+changed from 
 /1 = "1"
 /2 = "7"
 /3 = "6"
@@ -771,9 +1010,58 @@
 /41 = "2"
 /42 = "7"
 /43 = "2"
+
+to random list of numbers 1-12
+*********
+<item Object_Patch>
+/1 = "10"
+/2 = "11"
+/3 = "12"
+/4 = "6"
+/5 = "9"
+/6 = "3"
+/7 = "11"
+/8 = "5"
+/9 = "4"
+/10 = "10"
+/11 = "10"
+/12 = "1"
+/13 = "6"
+/14 = "9"
+/15 = "5"
+/16 = "6"
+/17 = "5"
+/18 = "6"
+/19 = "3"
+/20 = "4"
+/21 = "10"
+/22 = "9"
+/23 = "4"
+/24 = "12"
+/25 = "10"
+/26 = "10"
+/27 = "3"
+/28 = "11"
+/29 = "7"
+/30 = "4"
+/31 = "7"
+/32 = "10"
+/33 = "12"
+/34 = "4"
+/35 = "4"
+/36 = "1"
+/37 = "3"
+/38 = "8"
+/39 = "8"
+/40 = "10"
+/41 = "12"
+/42 = "10"
+/43 = "8"
 </item>
 
-<item Present_1_position>
+
+***
+old numbers:
 /1 = "9" 
 /2 = "1" 
 /3 = "8" 
@@ -817,9 +1105,55 @@
 /41 = "8" 
 /42 = "3" 
 /43 = "4" 
+***
+<item Present_1_position>
+/1 = "8" 
+/2 = "6" 
+/3 = "8" 
+/4 = "4" 
+/5 = "11" 
+/6 = "3" 
+/7 = "2" 
+/8 = "12" 
+/9 = "11" 
+/10 = "12" 
+/11 = "11" 
+/12 = "11" 
+/13 = "2" 
+/14 = "6" 
+/15 = "5" 
+/16 = "11" 
+/17 = "1" 
+/18 = "2" 
+/19 = "11" 
+/20 = "9" 
+/21 = "10" 
+/22 = "6" 
+/23 = "5" 
+/24 = "7" 
+/25 = "6" 
+/26 = "1" 
+/27 = "8" 
+/28 = "8" 
+/29 = "11" 
+/30 = "5" 
+/31 = "11" 
+/32 = "9" 
+/33 = "3" 
+/34 = "9" 
+/35 = "1" 
+/36 = "4" 
+/37 = "1" 
+/38 = "6" 
+/39 = "8" 
+/40 = "2" 
+/41 = "7" 
+/42 = "12" 
+/43 = "8" 
 </item>
 
-<item Present_2_position>
+*****
+old numbers:
 /1 = "7" 
 /2 = "5" 
 /3 = "4" 
@@ -863,6 +1197,51 @@
 /41 = "4" 
 /42 = "1" 
 /43 = "8" 
+*****
+<item Present_2_position>
+/1 = "8" 
+/2 = "10" 
+/3 = "8" 
+/4 = "12" 
+/5 = "5" 
+/6 = "9" 
+/7 = "2" 
+/8 = "5" 
+/9 = "10" 
+/10 = "8" 
+/11 = "3" 
+/12 = "11" 
+/13 = "10" 
+/14 = "8" 
+/15 = "2" 
+/16 = "3" 
+/17 = "4" 
+/18 = "12" 
+/19 = "11" 
+/20 = "6" 
+/21 = "9" 
+/22 = "3" 
+/23 = "4" 
+/24 = "6" 
+/25 = "7" 
+/26 = "2" 
+/27 = "6" 
+/28 = "9" 
+/29 = "1" 
+/30 = "10" 
+/31 = "2" 
+/32 = "3" 
+/33 = "8" 
+/34 = "6" 
+/35 = "5" 
+/36 = "3" 
+/37 = "11" 
+/38 = "2" 
+/39 = "3" 
+/40 = "4" 
+/41 = "6" 
+/42 = "11" 
+/43 = "4" 
 </item>
 
 <item Image_ID>
