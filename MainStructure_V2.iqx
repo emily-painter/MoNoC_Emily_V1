@@ -955,6 +955,7 @@ which location to put the patch
 			values.null_index = values.null_loc_8;	
 			values.which_place = "here45"		
 		}else if(counter.patch_of_random.selectedvalue == 9){
+		//WORKS HERE
 			trial.Patch_present.insertstimulusframe(text.cross, 1);
 			trial.Patch_present.insertstimulusframe(picture.nPatch_locate_9_resource, 2);
 			values.x_coordinate = values.location_horizontal_4;
@@ -968,7 +969,6 @@ which location to put the patch
 			values.null_index = values.null_loc_9;
 			values.which_place = "here46"			
 		}else if(counter.patch_of_random.selectedvalue == 10){
-		//error here
 			trial.Patch_present.insertstimulusframe(text.cross, 1);
 			trial.Patch_present.insertstimulusframe(picture.nPatch_locate_10_resource, 2);
 			values.x_coordinate = values.location_horizontal_5;
