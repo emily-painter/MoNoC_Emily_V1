@@ -1,0 +1,6 @@
+subject	Index	patch_ID	CongOrIncong	Patch_Source	Exist_Object	Patch_Position	patch_size	which_place	response	p_confidence	latency	Image_ID	null_index	OLIFE_subscale_1_score	OLIFE_subscale_2_score	OLIFE_subscale_3_score	OLIFE_subscale_4_score	response
+1	1	1	1	3	1	6	25pct	here6	-1	1	1345	19	0	0	0	0	0	response5d
+1	1	2	1	3	1	11	12.5pct	here11	-1	1	882	19	0	0	0	0	0	response5d
+1	1	3	1	3	1	12	12.5pct	here12	-1	1	1078	19	0	0	0	0	0	response5d
+1	1	4	1	3	1	8	25pct	here8	-1	1	537	19	0	0	0	0	0	response5d
+1	1	5	1	3	1	9	12.5pct	here9	0	0	4462	19	0	0	0	0	0	Ctrl+'Q'
