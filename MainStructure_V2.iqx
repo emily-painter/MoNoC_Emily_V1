@@ -995,7 +995,6 @@ which location to put the patch
 			values.null_index = values.null_loc_11;		
 			values.which_place = "here48"	
 		}else{
-		//PATCH WORKS HERE
 			trial.Patch_present.insertstimulusframe(text.cross, 1);
 			trial.Patch_present.insertstimulusframe(picture.nPatch_locate_12_resource, 2);
 			values.x_coordinate = values.location_horizontal_5;
