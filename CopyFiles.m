@@ -17,23 +17,20 @@ for subject = 1:1
         file_6 = 'CommonFile\consent_form.html';
         file_7 = 'GIFSource\CalibrationInstruction.gif';
         
-        location1 = 'grey_masks\location1.png';
-        location2 = 'grey_masks\location2.png';
-        location3 = 'grey_masks\location3.png';
-        location4 = 'grey_masks\location4.png';
-        location5 = 'grey_masks\location5.png';
-        location6 = 'grey_masks\location6.png';
-        location7 = 'grey_masks\location7.png';
-        location8 = 'grey_masks\location8.png';
-        location9 = 'grey_masks\location9.png';
-        location10 = 'grey_masks\location10.png';
-        location11 = 'grey_masks\location11.png';
-        location12 = 'grey_masks\location12.png';
+        location1 = 'CommonFile\location1.png';
+        location2 = 'CommonFile\location2.png';
+        location3 = 'CommonFile\location3.png';
+        location4 = 'CommonFile\location4.png';
+        location5 = 'CommonFile\location5.png';
+        location6 = 'CommonFile\location6.png';
+        location7 = 'CommonFile\location7.png';
+        location8 = 'CommonFile\location8.png';
+        location9 = 'CommonFile\location9.png';
         
-        CalibrationLine = 'CommonFile\CalibrationLine.png';
-        CalibrationPage4 = 'CommonFile\CalibrationPage4.png';
-        CalibrationPage5 = 'CommonFile\CalibrationPage5.png';
-        CalibrationPage6 = 'CommonFile\CalibrationPage6.png';
+        location10 = 'CommonFile\CalibrationLine.png';
+        location11 = 'CommonFile\CalibrationPage4.png';
+        location12 = 'CommonFile\CalibrationPage5.png';
+        location13 = 'CommonFile\CalibrationPage6.png';
         copyfile(file_1,DST_PATH_t);%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%COPY
         copyfile(file_2,DST_PATH_t);
         copyfile(file_3,DST_PATH_t);
@@ -54,14 +51,7 @@ for subject = 1:1
         copyfile(location10,DST_PATH_t);
         copyfile(location11,DST_PATH_t);
         copyfile(location12,DST_PATH_t);
-        
-        
-        
-        copyfile(CalibrationLine,DST_PATH_t);
-        copyfile(CalibrationPage4,DST_PATH_t);
-        copyfile(CalibrationPage5,DST_PATH_t);
-        copyfile(CalibrationPage6,DST_PATH_t);
-        
+        copyfile(location13,DST_PATH_t);
     file_name = 'Calibration.iqx';
     copyfile(file_name,DST_PATH_t);    
     file_name = 'Instruction.iqx';
