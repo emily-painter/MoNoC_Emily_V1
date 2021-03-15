@@ -168,19 +168,6 @@
 	/ select = sequence
 </picture>
 
-<picture CP_patch_centre>
-	/ size = (values.present_image_size/6,values.present_image_size/6)
-	/ items = CP_patch
-	/ select = sequence
-</picture>
-
-<picture CP_patch_present_centre>
-	/ size = (values.present_image_size/6,values.present_image_size/6)
-	/ hposition = text.x.item(values.order)
-	/ vposition = text.y.item(values.order)
-	/ items = ()
-	/ select = sequence
-</picture>
 
 
 <text process_notice>
